@@ -15,5 +15,5 @@ class Direction
 end
 
 class Dice
-  
+
 end
