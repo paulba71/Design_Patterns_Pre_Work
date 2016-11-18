@@ -1,3 +1,5 @@
+require_relative 'DieHistory'
+
 class DieMode
   FOUR=1
   EIGHT=2
@@ -15,35 +17,47 @@ class Direction
 end
 
 class Die
+
+
   def initialize (mode)
     @mode = mode
+    @log=DieHistory.new
   end
 
-  def spin
+  def roll_die
+    num=nil
     if @mode==DieMode::FOUR
-      return Random.rand(4)
+      num= Random.rand(4)
 
     end
-
     if @mode==DieMode::EIGHT
-      return Random.rand(8)
+      num=Random.rand(8)
     end
-
-    return 0
+    @log.add_roll(num) if (num!=nil)
+    return num
   end
+
+  def print_log
+    @log.print_history
+  end
+
 end
 
+# TEST CODE
 my_die=Die.new(DieMode::FOUR)
 counter=0
 while counter <20
-  result=my_die.spin
+  result=my_die.roll_die
   puts result.to_s
   counter = counter+1
 end
+my_die.print_log
+
 my_die2=Die.new(DieMode::EIGHT)
 counter=0
 while counter <20
-  result=my_die2.spin
+  result=my_die2.roll_die
   puts result.to_s
   counter = counter+1
 end
+my_die2.print_log
