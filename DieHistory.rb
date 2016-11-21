@@ -2,13 +2,16 @@ class DieHistory
 
   @history=Hash.new()
 
+
   def initialize
     @history= { "0" => 0, "1" => 0, "2" => 0, "3" => 0, "4" => 0, "5" => 0, "6" => 0, "7" => 0 }
+    @roll_count=0
   end
 
   def add_roll (number)
     current_count=@history[number.to_s]
     @history[number.to_s] = current_count+1
+    @roll_count=@roll_count+1
   end
 
   def print_history
@@ -20,6 +23,7 @@ class DieHistory
     puts "South East [5] = " + @history["5"].to_s
     puts "South West [6] = " + @history["6"].to_s
     puts "North West[ 7] = " + @history["7"].to_s
+    puts "Die roll count = " + @roll_count.to_s
   end
 end
 
