@@ -26,13 +26,12 @@ class Die
   end
 
   def roll_die
-    num=nil
+    num=0
     if @mode==DieMode::FOUR
-      num= Random.rand(4)
-
+      num = 1+Random.rand(4)
     end
     if @mode==DieMode::EIGHT
-      num=Random.rand(8)
+      num = 1+Random.rand(8)
     end
     @log.add_roll(num) if (num!=nil)
     return num
@@ -89,6 +88,10 @@ class Die
 
   def print_log
     @log.print_history
+  end
+
+  def print_summary_Log
+    @log.print_history_summary
   end
 
 end

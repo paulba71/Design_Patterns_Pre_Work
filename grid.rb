@@ -16,11 +16,11 @@ class Grid
     #  return false
     #end
 
-    if p.x.to_f < 0 || p.x.to_f > @size
+    if p.x < 0 || p.x >= @size
       return false
     end
 
-    if p.y.to_f < 0 || p.y.to_f > @size
+    if p.y < 0 || p.y >= @size
       return false
     end
 
@@ -28,7 +28,11 @@ class Grid
   end
 
   def is_point_at_end? (p)
-    (p.x == @size-1 && p.y == @size-1)?true:false
+    if (p.x == @size-1 && p.y == @size-1)
+      true
+    else
+      false
+    end
   end
 
 end #class
