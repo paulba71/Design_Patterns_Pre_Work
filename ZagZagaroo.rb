@@ -1,12 +1,10 @@
 require_relative "Dice"
-require_relative "Point"
-require_relative "grid"
 require_relative "Animal"
 
-class Kangaroo < Animal
+class ZagZagaroo < Animal
 
   def die_mode
-    DieMode::FOUR
+    DieMode::EIGHT
   end
 
   def count_hops_home (grid)
@@ -33,10 +31,6 @@ class Kangaroo < Animal
       sp=get_position
     end
     return hop_count
-  end
-
-  def chart_way_home (grid)
-    
   end
 
 end
