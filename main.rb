@@ -1,64 +1,38 @@
 require_relative "Kangaroo"
 require_relative "ZagZagaroo"
-require_relative "Dice"
 require_relative "Grid"
 
 class Main
   def run_part_one
+    puts "Simulation mode 1"
+    puts ""
     grid_size=0
-    while grid_size<2 || grid_size >100
-      print "Welcome to the simulation: Please specify a grid size (between 2-100): "
+    while grid_size<2 || grid_size >500
+      print "Welcome to the simulation: Please specify a grid size (between 2-500): "
       grid_size=gets().to_f
     end
 
     skippy= Kangaroo.new
     grid=Grid.new(grid_size)
 
-    hop_count=0
-
-    puts "Simulation mode 1"
     print "Skippy starts at "
     skippy.print_position
-    d=Die.new(skippy.die_mode)
-    sp=skippy.get_position
-    while !grid.is_point_at_end?(sp)
-      direction=d.roll_die
-      p=d.convert_roll_to_move(direction)
-      new_position=Point.new(0,0)
-      new_position.x=sp.x+p.x
-      new_position.y=sp.y+p.y
-      while !grid.is_point_within_grid?(new_position)
-        print "Oops, hit the boundary: "
-        new_position.print_point
-        puts
-        new_position.x=sp.x # revert the move out
-        new_position.y=sp.y
-        direction=d.roll_die
-        p=d.convert_roll_to_move(direction) # try again
-        new_position.x=sp.x+p.x
-        new_position.y=sp.y+p.y
-      end
-      skippy.move_to(new_position)
-      print "Hopped to: "
-      hop_count=hop_count+1
-      skippy.print_position
-      sp=skippy.get_position
-    end
-    puts "Finished in " + hop_count.to_s  + " hops!"
-    puts ""
-    d.print_summary_Log
+
+    skippy.chart_way_home(grid)
   end
 
   def run_part_two
+    puts "Simulation mode 2"
+    puts ""
     grid_size=0
     while grid_size<2 || grid_size >100
-      print "Welcome to the simulation 2: Please specify a grid size (between 2-100): "
+      print "Welcome to the simulation: Please specify a grid size (between 2-100): "
       grid_size=gets().to_f
     end
 
     number_of_runs=0
     while number_of_runs<2 || number_of_runs >1000
-      print "Welcome to the simulation 2: Please specify the number of runs (between 2-1000): "
+      print "Please specify the number of runs (between 2-1000): "
       number_of_runs=gets().to_f
     end
 
@@ -89,7 +63,7 @@ class Main
 
 end
 
-
+## Run the simulations
 program = Main.new
 program.run_part_one
 program.run_part_two
