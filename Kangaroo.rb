@@ -42,6 +42,7 @@ class Kangaroo < Animal
     while !grid.is_point_at_end?(sp)
       direction=d.roll_die
       p=d.convert_roll_to_move(direction)
+      print d.print_direction(direction)
       new_position=Point.new(0,0)
       new_position.x=sp.x+p.x
       new_position.y=sp.y+p.y
@@ -52,6 +53,7 @@ class Kangaroo < Animal
         new_position.x=sp.x # revert the move out
         new_position.y=sp.y
         direction=d.roll_die
+        print d.print_direction(direction)
         p=d.convert_roll_to_move(direction) # try again
         new_position.x=sp.x+p.x
         new_position.y=sp.y+p.y

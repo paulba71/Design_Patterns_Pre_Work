@@ -40,21 +40,21 @@ class Die
   def print_direction (direction)
     case direction
       when Direction::NORTH
-        print("NORTH")
+        print("NORTH ")
       when Direction::NORTHEAST
-        print("NORTHEAST")
+        print("NORTHEAST ")
       when Direction::EAST
-        print("EAST")
+        print("EAST ")
       when Direction::SOUTHEAST
-        print("SOUTHEAST")
+        print("SOUTHEAST ")
       when Direction::SOUTH
-        print("SOUTH")
+        print("SOUTH ")
       when Direction::SOUTHWEST
-        print("SOUTHWEST")
+        print("SOUTHWEST ")
       when Direction::WEST
-        print("WEST")
+        print("WEST ")
       when Direction::NORTHWEST
-        print("NORTHWEST")
+        print("NORTHWEST ")
     end
   end
 

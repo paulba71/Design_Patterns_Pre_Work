@@ -16,12 +16,6 @@ class Point
     print "("+@x.to_s+","+@y.to_s+")"
   end
 
-  # Implement a + operator
-  def +(p)
-    @x=@x+p.x
-    @y=@y+p.y
-  end
-
 end
 
 #Test code
