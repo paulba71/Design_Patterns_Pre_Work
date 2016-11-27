@@ -8,7 +8,7 @@ class Animal
   end
 
   def print_position
-    print "(" + @position.x.to_s + " ," +@position.y.to_s + ")"
+    @position.print_point
     puts""
   end
 
